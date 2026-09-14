@@ -13,7 +13,7 @@ A full-stack AI customer-service experience for a fictional restaurant network, 
 ![Three.js](https://img.shields.io/badge/Three.js-WebGL-202923?logo=threedotjs&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-API-202923?logo=fastapi&logoColor=009688)
 
-[Live experience](https://extras-saborexpress.h67eod.easypanel.host) · [Explore the product](#product-experiences) · [Architecture](#system-architecture) · [Run locally](#getting-started) · [Documentation](#documentation)
+· [Explore the product](#product-experiences) · [Architecture](#system-architecture) · [Run locally](#getting-started) · [Documentation](#documentation)
 
 </div>
 
