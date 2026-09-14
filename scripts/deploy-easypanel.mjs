@@ -113,13 +113,34 @@ function status() {
   }
 }
 
+function requestDeployment(name) {
+  assertSecureProfile();
+  const query = ["actions", "list", "--project-name", project, "--service-name", name, "--type", "deployment", "--limit", "5"];
+  const before = call(query);
+  const pending = before.find(item => item.status === "pending");
+  if (pending) {
+    console.log(`Deployment ${pending.id} is already pending for ${target(name)}; follow that action instead of starting another build.`);
+    return;
+  }
+  let requestError;
+  try { call(["app", "deploy", target(name)]); }
+  catch (error) { requestError = error; }
+  // EasyPanel can keep the deployment request open longer than the HTTP timeout.
+  // A new action is authoritative evidence that the server accepted the request.
+  const after = call(query);
+  const created = after.find(item => !before.some(previous => previous.id === item.id));
+  if (created) {
+    console.log(`Deployment action ${created.id} for ${target(name)}: ${created.status}. Verify the action log and container health before considering it ready.`);
+    if (!["pending", "done"].includes(created.status)) process.exitCode = 1;
+  } else if (requestError) throw requestError;
+  else console.log(`Deployment requested for ${target(name)}; inspect its action and health.`);
+}
+
 try {
   if (action === "configure") configure();
   else if (action === "status") status();
   else if (action === "deploy-web" || action === "deploy-backend") {
-    assertSecureProfile();
     const name = action === "deploy-web" ? web : backend;
-    call(["app", "deploy", target(name)]);
-    console.log(`Deployment requested for ${target(name)}. Inspect the action and health before considering it ready.`);
+    requestDeployment(name);
   } else throw new Error("Usage: node scripts/deploy-easypanel.mjs configure|status|deploy-backend|deploy-web");
 } catch (error) { console.error(error.message); process.exitCode = 1; }

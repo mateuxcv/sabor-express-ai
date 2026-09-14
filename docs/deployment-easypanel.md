@@ -1,5 +1,7 @@
 # Deploying Sabor Express on EasyPanel
 
+**Live application:** https://extras-saborexpress.h67eod.easypanel.host
+
 The deployment uses two app services built from the root of the same private GitHub repository:
 
 | Service | Dockerfile | Port | Exposure |
@@ -33,6 +35,8 @@ node scripts/deploy-easypanel.mjs deploy-web
 
 Configuration values are sent to the EasyPanel CLI through stdin, not command arguments or output. The web service receives only the Azure variables needed for file transcription and the shared backend token; the remaining integrations are configured on the backend.
 
+The helper follows an existing pending deployment instead of starting another one. If a build outlasts the HTTP request timeout, it checks the EasyPanel action records to distinguish an accepted background deployment from a failed submission. A completed action still requires a container health check.
+
 The helper defaults to the services above. `EASYPANEL_PROFILE`, `EASYPANEL_PROJECT`, `EASYPANEL_WEB_SERVICE`, `EASYPANEL_BACKEND_SERVICE` and `DEPLOY_PUBLIC_ORIGIN` can override the target. The public domain and web service must already exist. Review the target before running the helper: it replaces source, build and environment settings for those two services and removes domain mappings from the backend.
 
 ## GitHub and updates
@@ -54,3 +58,15 @@ Register that exact callback in the RD Station CRM application. Then open the de
 The initial deployment is publicly accessible, as selected by the project owner. The prototype does not implement operator accounts or tenant isolation. Its public application endpoints can invoke the configured external services. Keep provider budgets and the demonstration's intended exposure in mind when operating it.
 
 Back up `/data` as a unit so that the database and CRM encryption key remain together. Do not enable multiple backend replicas or start-first updates without adding distributed coordination.
+
+## Initial deployment verification
+
+Verified on 14 September 2026:
+
+- Both Docker builds completed on the EasyPanel server and both containers reported `healthy`.
+- The backend has the writable named volume `extras_sabor-concierge_sabor-data` mounted at `/data` and no public domain mapping.
+- The HTTPS web health endpoint returned 200; the assistant endpoint reported `crewai` and `ready: true`.
+- The restaurant rendered with WebGL in the deployed application. WhatsApp, dashboard, CRM and presentation pages returned 200, with no page errors in the browser smoke test.
+- A real informational request through the deployed assistant returned the Pinheiros opening hours using the concierge integration, without confirming an order or booking.
+- Audio transcription and Realtime status endpoints reported valid configuration. A microphone call and file transcription were not exercised during this deployment smoke test.
+- CRM application credentials are configured, but the hosted instance is not OAuth-connected. Register the hosted callback and complete account authorization through `/crm` before expecting synchronization.
