@@ -18,4 +18,4 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-py-modules = ["app", "agents", "flow", "models", "policy", "llm_config", "language", "systems", "prompts", "realtime", "realtime_config", "crm", "crm_storage", "crm_routes"]
+py-modules = ["app", "agents", "flow", "models", "policy", "llm_config", "language", "systems", "prompts", "realtime", "realtime_config", "crm", "crm_storage", "crm_routes", "crm_formatting", "csat", "ordering", "sentiment", "suggestions", "support_prompts"]

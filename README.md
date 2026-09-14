@@ -526,6 +526,8 @@ For a guided review, start in `/`, open `/whatsapp` and `/dashboard` in tabs of 
 
 ## Deployment considerations
 
+Docker images and an EasyPanel setup helper are included. See the [EasyPanel deployment guide](docs/deployment-easypanel.md) for service layout, internal networking, persistent storage, environment transfer and CRM callback configuration.
+
 For a local production build of the web application:
 
 ```bash

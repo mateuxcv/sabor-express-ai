@@ -1,0 +1,37 @@
+# syntax=docker/dockerfile:1
+FROM python:3.12-slim-bookworm AS dependencies
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PYTHONDONTWRITEBYTECODE=1
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential git ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+COPY services/concierge /app/services/concierge
+RUN python -m venv /opt/venv \
+    && /opt/venv/bin/pip install --no-cache-dir /app/services/concierge
+
+FROM python:3.12-slim-bookworm AS runtime
+ENV PATH="/opt/venv/bin:$PATH" \
+    PYTHONPATH=/app/services/concierge \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONUTF8=1 \
+    CREWAI_TRACING_ENABLED=false \
+    OTEL_SDK_DISABLED=true \
+    CONCIERGE_DB_PATH=/data/sabor.sqlite3 \
+    HOME=/home/concierge
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates libgomp1 gosu \
+    && rm -rf /var/lib/apt/lists/* \
+    && useradd --system --uid 10001 --create-home --home-dir /home/concierge concierge
+COPY --from=dependencies /opt/venv /opt/venv
+WORKDIR /app/services/concierge
+COPY services/concierge /app/services/concierge
+COPY src/lib/catalog.json /app/src/lib/catalog.json
+COPY deploy/concierge-entrypoint.sh /usr/local/bin/concierge-entrypoint
+RUN mkdir -p /data /home/concierge/.cache \
+    && chown -R concierge:concierge /app /data /home/concierge \
+    && chmod 755 /usr/local/bin/concierge-entrypoint
+EXPOSE 8000
+HEALTHCHECK --interval=30s --timeout=10s --start-period=120s --retries=3 \
+  CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=8)"
+ENTRYPOINT ["/usr/local/bin/concierge-entrypoint"]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1", "--proxy-headers", "--forwarded-allow-ips", "*"]
