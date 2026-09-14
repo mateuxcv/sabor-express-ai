@@ -1,0 +1,380 @@
+/* Sabor Express: warm paper, ink, tangerine and fresh green.
+   Shared visual identity; viewport and pane sizing live in the layout styles. */
+body {
+  font-optical-sizing: auto;
+}
+
+::selection { background: var(--lime); color: var(--ink); }
+:is(button, a, input, textarea, select):focus-visible { outline: 2px solid var(--accent-dark); }
+input::placeholder, textarea::placeholder { color: var(--muted); opacity: 1; }
+
+.brand { font-weight: 800; letter-spacing: -1px; }
+.brand-express { font-weight: 700; letter-spacing: -.3px; }
+.brand-period { color: var(--accent); }
+.brand-mark {
+  background: var(--accent);
+  color: var(--ink);
+  border-radius: 10px;
+  transform: none;
+  width: 38px;
+  height: 40px;
+}
+.brand-light { color: white; }
+.live-dot, .new-dot, .channel-dot.green { background: var(--green); }
+.channel-dot.amber { background: #dc7900; }
+.channel-dot.blue-dot { background: #2668c5; }
+
+/* A quiet, dark rail gives the brand accent somewhere to land. */
+.app-shell .sidebar { background: var(--rail); border-color: var(--rail); color: #f9faf5; }
+.sidebar .brand-period { color: var(--lime); }
+.sidebar .workspace-picker { background: #2c362f; border-color: #475049; color: #f7f8f3; box-shadow: none; }
+.sidebar .workspace-picker small { color: #bbc4bd; }
+.sidebar .workspace-icon { background: #3b453d; border-color: #536054; color: var(--lime); }
+.sidebar .nav-label { color: #b3bdb5; font-size: 10px; letter-spacing: 1.1px; }
+.sidebar .sidebar-divider { background: #3c463f; }
+.app-shell .main-nav button { color: #c5cec7; font-weight: 500; }
+.app-shell .main-nav button:hover { background: #364239; color: white; }
+.app-shell .main-nav button.active { background: var(--lime); color: var(--ink); font-weight: 700; }
+.sidebar .main-nav b { background: #202923; color: var(--lime); }
+.sidebar .secondary-nav button { color: #bdc8c0; }
+.sidebar .secondary-nav button:hover, .sidebar .secondary-nav button.selected { background: #354239; color: #fff; }
+.sidebar .secondary-nav button > span:last-child { color: #d6dfd8; }
+.sidebar .new-dot { background: var(--lime); }
+.sidebar .pilot-card { background: #303e32; border: 1px solid #4a5c43; border-radius: 10px; }
+.sidebar .pilot-card > div { color: var(--lime); }
+.sidebar .pilot-card strong { color: #f5f8ed; font-family: var(--heading); font-weight: 700; font-size: 17px; line-height: 1.35; }
+.sidebar .pilot-card p { color: #c0cdb8; }
+.sidebar .pilot-card button { color: var(--lime); }
+.sidebar .pilot-card .live-dot { background: var(--lime); }
+.sidebar .pilot-leaf { color: #829b59; opacity: .2; }
+.sidebar .bottom-link, .sidebar .user-profile { color: #e0e6df; }
+.sidebar .user-profile { border-color: #414c43; }
+.sidebar .user-profile small, .sidebar .powered { color: #b8c3ba; }
+.sidebar .powered { border-color: #414c43; }
+.sidebar .powered b { color: #eef2e9; }
+.sidebar .powered > span { color: var(--accent); }
+
+.app-shell .topbar { background: var(--surface); border-color: var(--border); }
+.app-shell .breadcrumb { color: var(--muted); }
+.app-shell .breadcrumb strong { color: var(--ink); }
+.demo-badge { background: var(--accent-soft); border-color: #ffd3bd; color: var(--accent-dark); font-weight: 600; }
+.demo-badge > span { background: var(--accent); }
+.app-shell .preview-link { color: var(--accent-dark); font-weight: 600; }
+.app-shell .preview-link:hover { color: var(--ink); background: var(--accent-soft); }
+.icon-button { color: var(--muted); }
+.icon-button:hover { color: var(--ink); background: #edf0ea; }
+.notification-button i { background: var(--accent); }
+.app-shell .page-heading h1 { color: var(--ink); font-weight: 750; letter-spacing: -1.3px; }
+.page-heading h1 > span, .view-title h1 > span { color: var(--accent); }
+.heading-eyebrow { color: var(--green-dark); font-weight: 600; }
+.app-shell .page-heading p, .app-shell .view-title > p { color: var(--muted); }
+.app-shell .store-selector, .app-shell .inbox-indicators-button { background: white; border-color: #d7dcd4; color: #46534b; }
+.app-shell .store-selector select { color: var(--ink); }
+.primary-button, .app-shell .send-button, .voice-send-button {
+  background: var(--accent);
+  color: #242b20;
+  border-color: var(--accent);
+  font-weight: 700;
+  box-shadow: none;
+}
+.primary-button:hover, .app-shell .send-button:hover:not(:disabled), .voice-send-button:hover:not(:disabled) { background: #f04b17; color: #181e15; }
+.app-shell .stats-strip { background: white; border-color: var(--border); }
+.app-shell .stat-label { color: var(--muted); font-weight: 500; }
+.app-shell .stat-value { color: var(--ink); font-family: var(--heading); font-weight: 750; font-variant-numeric: tabular-nums; }
+.app-shell .stat-value > span { background: var(--green-light); color: var(--green-dark); }
+.app-shell .stat-icon { background: var(--accent-soft); color: var(--accent-dark); border-radius: 9px; }
+.mini-stat:nth-child(2) .stat-icon { background: var(--green-light); color: var(--green-dark); }
+.mini-stat:nth-child(3) .stat-icon { background: #fff1c5; color: #805900; }
+.mini-stat:nth-child(4) .stat-icon { background: #e7edfc; color: #2858a5; }
+.app-shell .stats-demo { color: var(--muted); }
+
+/* Conversation hierarchy: neutral reading surfaces, colour for meaning. */
+.app-shell .conversation-list, .app-shell .contact-panel { background: #fff; border-color: var(--border); }
+.app-shell .list-heading h2, .app-shell .details-heading h2 { color: var(--ink); font-family: var(--heading); font-weight: 700; }
+.app-shell .list-heading h2 > span { background: var(--accent-soft); color: var(--accent-dark); }
+.app-shell .search-field { background: #f6f7f4; border: 1px solid var(--border); color: var(--muted); }
+.app-shell .search-field input { color: var(--ink); }
+.app-shell .search-field input::placeholder { color: var(--muted); }
+.app-shell .search-field:focus-within { border-color: var(--accent-dark); }
+.app-shell .list-tabs { border-color: var(--border); }
+.app-shell .list-tabs button { color: var(--muted); font-weight: 500; }
+.app-shell .list-tabs button.active { background: var(--ink); color: #fff; }
+.app-shell .list-tabs button > span { background: #e7ebe4; color: #4c574f; }
+.app-shell .list-tabs button.active > span { background: #445247; color: white; }
+.app-shell .list-sort > span, .app-shell .list-sort button { color: var(--muted); }
+.app-shell .conversation-item { border-radius: 9px; border-color: #edf0ea; }
+.app-shell .conversation-item:hover { background: #f5f7f2; }
+.app-shell .conversation-item.active { background: var(--accent-soft); box-shadow: inset 3px 0 var(--accent); border-color: transparent; }
+.app-shell .conversation-name strong { color: var(--ink); font-weight: 650; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.app-shell .conversation-name time { flex-shrink: 0; }
+.app-shell .conversation-name time, .app-shell .conversation-store { color: var(--muted); }
+.app-shell .conversation-preview > p { color: #657067; }
+.app-shell .conversation-avatar > span:last-child { background: var(--green); color: #fff; border-color: white; }
+.app-shell .unread-count { background: var(--accent); color: #202923; font-weight: 700; }
+.tiny-status.ai, .status-pill.ai, .tiny-status.resolved, .status-pill.resolved { color: var(--green-dark); background: var(--green-light); }
+.tiny-status.waiting, .status-pill.waiting { color: #885500; background: #fff0bd; }
+.tiny-status.human, .status-pill.human { color: #245bb1; background: #e7efff; }
+.app-shell .list-footer { color: var(--muted); background: #f8f9f6; border-color: var(--border); }
+.avatar { font-family: var(--font); font-weight: 650; }
+.avatar.peach { background: #ffdbc2; color: #8c3d19; }
+.avatar.lavender { background: #dee8ff; color: #3056a4; }
+.avatar.mint { background: #c9f0d9; color: #146244; }
+.avatar.sand { background: #fae7b2; color: #78580c; }
+
+.app-shell .chat-panel { background: #f5f6f2; }
+.app-shell .chat-header { background: #fff; border-color: var(--border); }
+.app-shell .chat-contact h2 { color: var(--ink); font-weight: 700; }
+.app-shell .chat-contact > span { color: var(--muted); }
+.app-shell .resolve-button { background: var(--green-light); color: var(--green-dark); border-color: #b8dfc9; font-weight: 600; }
+.app-shell .resolve-button:hover { background: #c6edda; }
+.app-shell .ai-status-bar { background: var(--green-light); color: var(--green-dark); border-color: #c8e8d6; }
+.app-shell .ai-status-bar button { color: var(--green-dark); font-weight: 700; }
+.app-shell .ai-status-bar.waiting-bar { background: #fff0bd; color: #795000; border-color: #f0d480; }
+.app-shell .waiting-bar button { color: #795000; }
+.app-shell .chat-routing { background: #f0f3ec; color: #4f6155; border-color: var(--border); }
+.app-shell .chat-routing small { color: #657368; }
+.app-shell .message-thread { background: transparent; }
+.message-bubble, .customer-thread .message-bubble {
+  background: white;
+  border: 1px solid #e0e5dc;
+  color: var(--ink);
+  box-shadow: 0 2px 0 #20292304;
+}
+.outgoing .message-bubble { background: #e3f4e7; border-color: #c8e2ce; color: var(--ink); }
+.message-author { color: #42634e; }
+.outgoing .message-author { color: #42634e; }
+.message-author > span, .message-receipt { color: #657368; }
+.app-shell .internal-note .message-bubble { background: #fff2c9; color: #674c14; border-color: #ecda9d; }
+.day-divider > span { background: #e7ece3; color: #56634f; border-color: #dce3d6; }
+.thread-start, .event-message { color: #65705f; }
+.typing-bubble { background: #fff; border: 1px solid var(--border); }
+.typing-bubble > span { background: var(--green); }
+.app-shell .composer { background: #fff; border-color: #cdd6ca; box-shadow: 0 3px 12px #20292305; }
+.app-shell .composer:focus-within { border-color: var(--green); box-shadow: 0 0 0 2px #087f5b1a; }
+.app-shell .composer textarea { color: var(--ink); }
+.app-shell .composer textarea::placeholder { color: #707b70; }
+.app-shell .composer-type { border-color: var(--border); }
+.app-shell .composer-type button { color: var(--muted); }
+.app-shell .composer-type button.active { color: var(--green-dark); font-weight: 650; }
+.app-shell .composer-type button.active::after { background: var(--green); }
+.app-shell .composer-type > span, .app-shell .composer-hint { color: var(--muted); }
+.app-shell .suggestion-button { color: var(--green-dark); }
+.app-shell .note-composer { background: #fffaf0; border-color: #e3cb80; }
+.app-shell .note-composer textarea { background: transparent; }
+.chat-welcome { color: var(--ink); }
+.chat-welcome > span { background: var(--accent-soft); color: var(--accent-dark); }
+.chat-welcome p, .app-shell .chat-welcome p { color: var(--muted); }
+.product-card { border-color: #dce3d5; background: white; }
+.product-card:disabled { opacity: 1; }
+.product-card:hover:not(:disabled) { border-color: var(--accent); }
+.product-art.peach { background: #ffe0bb; }
+.product-art.mint { background: #d7ebae; }
+.product-art.sand { background: #ffe791; }
+.product-label { color: #37422a; background: #ffffffd9; font-weight: 700; }
+.product-copy > strong { color: var(--ink); font-family: var(--heading); font-weight: 700; }
+.product-copy > span { color: var(--muted); }
+.product-copy b, .product-copy svg { color: var(--accent-dark); }
+
+.contact-profile h3, .contact-properties strong, .detail-section h3 { color: var(--ink); }
+.contact-profile > span:not(.avatar), .contact-properties > div > span:first-child,
+.app-shell .ai-summary p, .summary-footnote, .routing-panel > p, .integration-note small { color: var(--muted); }
+.contact-profile > .contact-channel { background: var(--green-light); color: var(--green-dark); }
+.tags > span { color: #4d6252; background: #eef2e8; border-color: #d9e1d3; }
+.ai-summary { background: #f5f8ee; border-color: #dfe8d2; }
+.routing-source, .routing-checks li { color: var(--green-dark); }
+.routing-path, .routing-path strong { color: #52694f; }
+.booking-details { border-color: var(--border); }
+.booking-details h4, .booking-details dd { color: var(--ink); }
+.booking-details dt, .booking-details small { color: var(--muted); }
+.order-card { background: #fff; border-color: var(--border); }
+.order-status { color: var(--green-dark); background: var(--green-light); }
+.order-product strong, .order-total, .order-total strong { color: var(--ink); }
+.order-product small { color: var(--muted); }
+.order-card > button { color: var(--accent-dark); background: var(--accent-soft); border-color: #ffdcc8; }
+
+/* Client experience: expressive type, solid blocks, a tactile phone frame. */
+.whatsapp-page { background: #f8f7f0; }
+.demo-header { border-bottom: 1px solid var(--border); }
+.back-to-inbox { color: var(--ink); font-size: 12px; font-weight: 600; }
+.back-to-inbox:hover { color: var(--accent-dark); }
+.experience-eyebrow { color: var(--green-dark); font-size: 10px; font-weight: 650; letter-spacing: 1.3px; }
+.experience-copy h1 { font-size: clamp(42px, 4.2vw, 62px); font-weight: 800; letter-spacing: -2.8px; line-height: 1.06; margin-top: 24px; }
+.experience-copy h1 > span { color: var(--accent-dark); }
+.experience-copy > p { color: #596358; font-size: 14px; line-height: 1.8; }
+.experience-features { gap: 12px; }
+.experience-features > span { color: #455344; font-size: 10px; font-weight: 500; }
+.experience-features svg { color: var(--green); }
+.section-kicker { color: #62705c; font-size: 10px; font-weight: 650; letter-spacing: 1.2px; }
+.scenario-section { margin-top: 30px; max-width: 420px; }
+.scenario-card { background: white; border-color: #dce2d5; border-radius: 10px; padding: 13px 15px; }
+.scenario-card.active { background: #fff1e4; border-color: var(--accent); box-shadow: inset 3px 0 var(--accent); }
+.scenario-card:hover { transform: translateX(2px); border-color: var(--accent); box-shadow: none; }
+.scenario-icon.peach { background: var(--accent); color: #242b20; }
+.scenario-icon.lavender { background: #dfebff; color: #245bb1; }
+.scenario-icon.mint { background: var(--lime); color: #3d5422; }
+.scenario-card strong { color: var(--ink); font-family: var(--heading); font-size: 15px; font-weight: 650; }
+.scenario-card small { color: #626e5b; font-size: 11px; line-height: 1.5; }
+.scenario-card > svg { color: var(--accent-dark); }
+.booking-scenarios { max-width: 420px; }
+.booking-scenarios button { background: transparent; border-color: #d5ddcc; color: #485840; font-size: 11px; min-height: 44px; }
+.booking-scenarios button:hover, .booking-scenarios button.active { color: var(--green-dark); border-color: var(--green); background: var(--green-light); }
+.experience-trust { margin-top: 24px; }
+.trust-icon { color: var(--green-dark); background: #eaf0dc; }
+.experience-trust p { color: var(--muted); font-size: 11px; }
+.experience-trust strong { color: #42513c; }
+.phone-stage { isolation: isolate; }
+.phone-stage::before {
+  content: "";
+  position: absolute;
+  inset: 8% -8px 9%;
+  background: var(--lime);
+  border-radius: 48% 48% 22px 22px;
+  transform: rotate(-6deg);
+  z-index: -1;
+}
+.phone-stage .phone-frame { border-color: #293329; background: #f1f4ea; box-shadow: 10px 16px 0 #20292312, 0 24px 50px #283a2520; }
+.phone-status { background: var(--rail); color: #f7f9ef; }
+.phone-status .battery { border-color: #f7f9ef; }
+.phone-status .battery i, .phone-status .battery::after { background: #f7f9ef; }
+.phone-status .dynamic-island { background: #101710; }
+.whatsapp-header { background: var(--rail); color: white; border-color: #43503c; }
+.whatsapp-header > a, .whatsapp-header .icon-button, .whatsapp-header .call-launch { color: #f2f6eb; }
+.whatsapp-header .icon-button:hover, .whatsapp-header .call-launch:hover { background: #3d4c3a; }
+.whatsapp-brand-icon { background: none; }
+.whatsapp-brand-icon .brand-mark { width: 37px; height: 37px; border-radius: 11px; }
+.whatsapp-contact strong { color: #fff; font-family: var(--heading); font-size: 15px; font-weight: 700; }
+.whatsapp-contact strong > span { background: var(--lime); color: #244029; }
+.whatsapp-contact small { color: #c3d2ba; font-size: 10px; }
+.phone-store { background: #e1edce; color: #435636; font-size: 10px; border-color: #d0ddbf; }
+.phone-store > span:last-child { color: var(--green-dark); }
+.phone-menu { background: #fff; border-color: var(--border); color: var(--ink); }
+.phone-menu button, .phone-menu a { color: var(--ink); min-height: 44px; font-size: 12px; }
+.phone-menu button:hover, .phone-menu a:hover { background: var(--accent-soft); }
+.whatsapp-messages { background: #f1f4ea; }
+.encryption-note { background: #e9eedf; color: #627052; font-size: 9px; line-height: 1.6; border-color: #dce4cf; }
+.customer-thread .message-bubble { font-size: 13px; line-height: 1.65; border-radius: 12px; padding: 11px 12px; }
+.customer-thread .incoming .message-bubble { border-top-left-radius: 3px; }
+.customer-thread .outgoing .message-bubble { background: #daf2af; border-color: #c4de96; color: #28391c; border-top-right-radius: 3px; }
+.customer-thread .bubble-meta { color: #687958; font-size: 9px; }
+.customer-thread .bubble-meta svg { color: #23755e; }
+.customer-thread .chat-welcome h3 { font-size: 18px; font-weight: 700; }
+.customer-thread .chat-welcome p { font-size: 13px; }
+.customer-thread .chat-welcome > span { background: var(--lime); color: #415a22; }
+.customer-thread .menu-cards { overflow-x: auto; gap: 8px; padding-bottom: 5px; scroll-snap-type: x proximity; }
+.customer-thread .product-card { flex: 0 0 136px; scroll-snap-align: start; }
+.customer-thread .product-art { height: 92px; }
+.customer-thread .product-copy { padding: 9px; }
+.customer-thread .product-copy > strong { font-size: 12px; }
+.customer-thread .product-copy > span { font-size: 10px; }
+.customer-thread .product-copy b { font-size: 12px; }
+.customer-thread .product-label { font-size: 7px; }
+.quick-replies, .quick-confirm { background: #f1f4ea; }
+.quick-replies button { background: white; border-color: #b9cba6; color: #365c32; font-size: 11px; min-height: 40px; }
+.quick-replies button:hover { background: #e5f1d6; border-color: var(--green); }
+.quick-confirm button { background: var(--green); color: white; min-height: 44px; font-size: 12px; font-weight: 600; }
+.human-handoff { background: #fff0bd; color: #795000; font-size: 11px; }
+.human-handoff a { color: #795000; }
+.voice-composer-shell, .whatsapp-composer, .phone-bottom { background: #e8efdd; }
+.whatsapp-composer { border-color: #d3dfc6; }
+.whatsapp-composer > div { background: white; border-color: #d1ddc5; }
+.whatsapp-composer input { color: var(--ink); font-size: 16px; }
+.whatsapp-composer input::placeholder { color: #707b66; }
+.whatsapp-composer > button { background: var(--accent); color: #202923; min-width: 44px; min-height: 44px; }
+.phone-bottom > span { background: #34472b; }
+.phone-caption .assistant-connection { color: #4e6440; font-size: 10px; }
+.experience-footer { color: #6b7560; border-color: #dce2d3; font-size: 10px; }
+.experience-footer b { color: var(--ink); }
+.experience-footer .footer-star { color: var(--accent-dark); }
+
+/* Voice and common surfaces use the same palette. */
+.voice-capture-heading, .voice-progress, .voice-review, .voice-recording > time,
+.voice-message-label, .voice-transcript summary, .voice-text-only { color: #4c6841; }
+.voice-review textarea { color: var(--ink); background: white; border-color: #bdcdb0; }
+.voice-wave i { background: var(--green); }
+.voice-stop, .voice-retry { background: var(--green-light); color: var(--green-dark); }
+.recording-dot { background: #d73527; }
+.call-in-progress { background: var(--green-light); color: var(--green-dark); }
+.realtime-call { background: #f1f4e9; color: var(--ink); }
+.call-avatar { background: var(--accent); color: var(--ink); border-color: #fff; box-shadow: 0 0 0 12px #d6f36a66; }
+.call-avatar .brand-mark { width: 52px; height: 52px; background: transparent; }
+.call-avatar .brand-mark svg { width: 42px; height: 42px; }
+.call-top > span, .call-identity p, .call-unit, .call-state { color: #516649; }
+.call-unit { border-color: #cddabd; background: white; }
+.modal { border-color: var(--border); background: white; }
+.modal-body > p, .demo-steps, .settings-row, .info-callout { color: #65705f; }
+.settings-row strong, .demo-steps b { color: var(--ink); }
+.info-callout { border-color: #dce4d3; background: #f2f6eb; }
+.modal-hero-icon { color: var(--accent-dark); background: var(--accent-soft); }
+.toggle.on { background: var(--green); }
+.assistant-connection { background: var(--green-light); border-color: #bddfca; color: var(--green-dark); }
+.connection-compact { background: transparent; }
+.connection-pending { background: #bd7400; }
+.toast { background: var(--ink); color: white; border-color: #485640; }
+.app-shell .mobile-nav { background: white; border-color: var(--border); }
+.mobile-nav button { color: #65705f; }
+.mobile-nav button[aria-current="page"] { color: var(--accent-dark); background: var(--accent-soft); }
+.mobile-nav button > i { color: var(--ink); background: var(--accent); }
+
+@media (min-width: 1280px) {
+  .app-shell .main-nav button { font-size: 12px; }
+  .app-shell .list-heading h2, .app-shell .details-heading h2 { font-size: 14px; }
+  .app-shell .conversation-name strong { font-size: 13px; }
+  .app-shell .conversation-preview > p { font-size: 12px; height: 18px; }
+  .app-shell .conversation-name time, .app-shell .conversation-store, .app-shell .tiny-status { font-size: 10px; }
+  .app-shell .message-bubble { font-size: 13px; line-height: 1.75; }
+  .app-shell .message-author, .app-shell .ai-status-bar, .app-shell .ai-status-bar button { font-size: 11px; }
+  .app-shell .composer textarea { font-size: 14px; }
+  .app-shell .composer textarea::placeholder { font-size: 12px; }
+  .app-shell .composer-type button, .app-shell .send-button, .app-shell .suggestion-button { font-size: 11px; }
+  .app-shell .contact-properties > div, .app-shell .contact-properties strong, .app-shell .ai-summary p { font-size: 11px; }
+  .app-shell .detail-section h3 { font-size: 12px; }
+  .app-shell .summary-footnote { font-size: 9px; }
+}
+
+@media (min-width: 768px) and (max-width: 1366px) {
+  .experience-copy h1 { font-size: clamp(35px, 4.3vw, 54px); letter-spacing: -2px; }
+  .experience-copy > p { font-size: 13px; }
+  .experience-features { gap: 9px; }
+  .experience-features > span { font-size: 9px; }
+  .experience-eyebrow { font-size: 9px; letter-spacing: .8px; }
+  .phone-stage::before { inset-inline: 0; }
+}
+
+@media (max-width: 767px) {
+  .experience-layout { display: flex; flex-direction: column; gap: 32px; padding: 28px 20px 36px; }
+  .demo-header { padding: 20px; }
+  .experience-copy { padding: 0; width: 100%; max-width: 460px; }
+  .experience-copy h1 { font-size: clamp(38px, 8.4vw, 54px); letter-spacing: -1.8px; }
+  .experience-eyebrow { font-size: 9px; letter-spacing: .7px; }
+  .experience-copy > p { font-size: 14px; }
+  .experience-features > span { font-size: 10px; }
+  .scenario-section, .booking-scenarios { max-width: none; }
+  .experience-copy .scenario-section { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+  .scenario-section .section-kicker { margin-bottom: 4px; }
+  .scenario-section .scenario-card { flex-direction: row; text-align: left; align-items: center; padding: 12px; gap: 10px; margin: 0; }
+  .scenario-section .scenario-icon { width: 36px; height: 36px; }
+  .scenario-section .scenario-card strong { font-size: 14px; }
+  .scenario-section .scenario-card small { display: block; font-size: 11px; margin-top: 3px; }
+  .scenario-section .scenario-card > svg { display: block; width: 17px; }
+  .booking-scenarios button { font-size: 11px; }
+  .phone-stage { width: 100%; max-width: 400px; }
+  .phone-stage::before { inset: 5% 0 8%; transform: rotate(-3deg); }
+  .phone-stage .phone-frame { width: 100%; max-width: 390px; height: 740px; max-height: none; }
+  .whatsapp-contact strong { font-size: 15px; }
+  .whatsapp-header { gap: 7px; }
+  .whatsapp-header > a, .whatsapp-header .call-launch, .whatsapp-header .icon-button { min-height: 44px; }
+  .quick-replies button { min-height: 44px; }
+  .customer-thread .message-bubble { font-size: 14px; }
+  .experience-footer { padding: 20px; gap: 12px; }
+}
+
+@media (max-width: 359px) {
+  .experience-layout { padding-inline: 12px; }
+  .experience-eyebrow { font-size: 8px; }
+  .whatsapp-brand-icon .brand-mark { width: 30px; height: 34px; }
+  .whatsapp-contact strong { font-size: 13px; }
+  .whatsapp-contact small { font-size: 9px; }
+  .phone-store { font-size: 9px; }
+  .experience-features { gap: 8px; }
+  .experience-features > span { font-size: 9px; }
+}

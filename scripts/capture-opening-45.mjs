@@ -1,0 +1,10 @@
+import { chromium, expect } from '@playwright/test';
+const browser=await chromium.launch({channel:'msedge',headless:true});
+const context=await browser.newContext({viewport:{width:1280,height:738},deviceScaleFactor:2,reducedMotion:'reduce'});
+const page=await context.newPage();
+await page.goto('http://localhost:3000/dashboard');
+await expect(page.locator('.chat-panel .chat-welcome')).toBeVisible();
+await page.evaluate(()=>document.fonts.ready);
+await page.screenshot({path:'generated-media/sabor-express-45s/00-central-inicial.png'});
+await browser.close();
+console.log('Captured actual empty inbox for the proposal introduction.');

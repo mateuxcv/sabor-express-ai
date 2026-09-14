@@ -1,0 +1,33 @@
+.sentiment-dashboard { margin-bottom: 24px; padding: 24px; background: #fff; border: 1px solid #e4e8e4; border-radius: 16px; }
+.sentiment-dashboard .section-title { margin: 0 0 16px; gap: 12px; }
+.sentiment-dashboard h2 { font-size: 18px; }
+.sentiment-dashboard .section-title p { font-size: 12px; color: #64716b; margin-top: 6px; }
+.sentiment-filters, .sentiment-actions, .sentiment-details { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.sentiment-filters { margin-bottom: 16px; font-size: 12px; }
+.sentiment-filters label { display: flex; align-items: center; gap: 8px; }
+.sentiment-filters select { border: 1px solid #d4dcd6; padding: 8px; border-radius: 8px; background: #fff; color: #263c30; max-width: 100%; }
+.sentiment-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px; }
+.sentiment-card, .sentiment-banner { border: 1px solid #efd6a3; border-left: 4px solid #b88018; border-radius: 10px; padding: 14px; background: #fffcf4; font-size: 12px; overflow-wrap: anywhere; }
+.sentiment-card.high, .sentiment-banner.high { border-color: #f0c5bb; border-left-color: #ba4938; background: #fff8f5; }
+.sentiment-card header { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-bottom: 14px; }
+.sentiment-card header strong { font-size: 15px; }
+.sentiment-card header time { width: 100%; color: #68726c; font-size: 11px; }
+.sentiment-title { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; color: #833e23; }
+.sentiment-title small { padding: 3px 6px; border-radius: 4px; background: #f6e6ce; }
+.sentiment-card p, .sentiment-banner p { margin: 8px 0; line-height: 1.5; }
+.sentiment-card blockquote, .sentiment-banner blockquote { margin: 10px 0; padding-left: 10px; border-left: 2px solid #dbc8b5; color: #5b5349; }
+.sentiment-details { font-size: 11px; color: #6a6255; }
+.sentiment-crm { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px 10px; font-size: 11px; }
+.sentiment-crm a { display: inline-flex; align-items: center; gap: 3px; text-decoration: underline; }
+.sentiment-crm small { width: 100%; }
+.sentiment-actions { margin-top: 12px; }
+.sentiment-actions button, .sentiment-error button { padding: 7px 10px; border: 1px solid #bfcfc4; border-radius: 7px; background: #fff; color: #244e34; font-weight: 600; font-size: 11px; cursor: pointer; }
+.sentiment-actions button:disabled { opacity: .55; cursor: wait; }
+.sentiment-banner { margin: 8px 12px; max-height: 230px; overflow-y: auto; flex: 0 1 auto; }
+.sentiment-error { margin: 8px 12px; padding: 10px; border-radius: 8px; background: #fff1e9; color: #943d24; font-size: 12px; }
+.sentiment-error button { margin-left: 8px; }
+.sentiment-empty { color: #69736c; font-size: 13px; padding: 12px 0; }
+.sentiment-priority { display: inline-flex; align-items: center; gap: 4px; color: #aa402c; font-size: 10px; margin-top: 5px; font-weight: 600; }
+.sentiment-dashboard.compact { padding: 0; border: 0; }
+.has-attention .notification-button::after { content: ""; position: absolute; top: 6px; right: 6px; width: 7px; height: 7px; border-radius: 50%; background: #ba4938; border: 1px solid #fff; }
+@media (max-width: 640px) { .sentiment-dashboard { padding: 16px; } .sentiment-banner { max-height: 170px; padding: 10px; } .sentiment-filters { align-items: flex-start; flex-direction: column; } }

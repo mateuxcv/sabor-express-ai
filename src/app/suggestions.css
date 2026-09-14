@@ -1,0 +1,13 @@
+.reply-suggestion-panel { margin: 5px 0 10px; padding: 10px 12px; border: 1px solid #dce5cc; border-radius: 10px; background: #f6faef; color: #355133; }
+.reply-suggestion-panel header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.reply-suggestion-panel header strong { display: flex; align-items: center; gap: 6px; font-size: 11px; }
+.reply-suggestion-panel p { font-size: 11px; line-height: 1.5; margin: 7px 0 0; }
+.reply-suggestion-panel .reply-suggestion-error { color: #a2442c; }
+.reply-suggestion-options { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.reply-suggestion-options button { min-height: 30px; padding: 5px 9px; border: 1px solid #cbdab8; border-radius: 7px; font-size: 11px; background: #fff; color: #355133; }
+.reply-suggestion-options button[aria-pressed="true"] { border-color: #709644; background: #e6f0d4; font-weight: 600; }
+.suggestion-button:disabled { cursor: default; opacity: .6; }
+.suggestion-spinner { animation: suggestion-spin 1s linear infinite; }
+@keyframes suggestion-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .suggestion-spinner { animation: none; } }
+@media (max-width: 640px) { .reply-suggestion-panel { padding: 8px 10px; } .reply-suggestion-options button { min-height: 36px; } }

@@ -1,0 +1,27 @@
+{
+  "version": "demo-funcional-v3",
+  "products": [
+    { "id": "classic", "name": "Combo Clássico", "description": "Burger artesanal, fritas e refri.", "price": 35.9, "emoji": "🍔", "color": "peach" },
+    { "id": "chicken", "name": "Combo Crispy", "description": "Frango crocante, fritas e refri.", "price": 32.9, "emoji": "🍗", "color": "yellow" },
+    { "id": "veggie", "name": "Combo Veggie", "description": "Burger de grão-de-bico, fritas e refri.", "price": 34.9, "emoji": "🥗", "color": "mint" },
+    { "id": "bacon", "name": "Combo Bacon", "description": "Burger artesanal com bacon, cheddar, fritas e refri.", "price": 39.9, "emoji": "🥓", "color": "peach" },
+    { "id": "fries", "name": "Batata Cheddar", "description": "Porção de fritas com cheddar cremoso.", "price": 16.9, "emoji": "🍟", "color": "yellow" },
+    { "id": "milkshake", "name": "Milkshake de Chocolate", "description": "Milkshake cremoso de chocolate, 400 ml.", "price": 18.9, "emoji": "🥤", "color": "pink" },
+    { "id": "brownie", "name": "Brownie de Chocolate", "description": "Brownie de chocolate com calda, porção individual.", "price": 12.9, "emoji": "🍫", "color": "lavender" }
+  ],
+  "stores": [
+    { "name": "São Paulo · Pinheiros", "hours": "Todos os dias, das 11h às 23h", "parking": "Estacionamento conveniado ao lado. Primeira hora gratuita para clientes.", "deliveryFee": 6.9 },
+    { "name": "São Paulo · Vila Mariana", "hours": "Todos os dias, das 11h às 23h", "parking": null, "deliveryFee": 7.9 },
+    { "name": "São Paulo · Moema", "hours": "Todos os dias, das 11h às 23h", "parking": null, "deliveryFee": 8.9 }
+  ],
+  "reservations": {
+    "automaticConfirmation": true,
+    "requiredFields": ["date", "time", "guests"],
+    "availability": "Agenda fictícia em SQLite. Consulta e confirmação após consentimento do cliente.",
+    "capacity": 40, "maxPartySize": 20, "durationMinutes": 120,
+    "leadMinutes": 60, "horizonDays": 60, "firstHour": 11, "lastHour": 21,
+    "baselineBookings": [{ "weekday": 5, "time": "19:00", "guests": 24 }]
+  },
+  "inventory": { "classic": 25, "chicken": 12, "veggie": 8, "bacon": 15, "fries": 30, "milkshake": 20, "brownie": 25 },
+  "fulfillment": { "pickupEstimate": "20 a 30 minutos", "deliveryEstimate": "40 a 60 minutos", "disclaimer": "Frete e prazos fictícios. Nenhuma entrega ou cobrança real será realizada." }
+}

@@ -1,0 +1,21 @@
+[project]
+name = "sabor-concierge"
+version = "0.1.0"
+description = "Recepção e encaminhamento Sabor Express com CrewAI Flows"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "crewai[azure-ai-inference]==1.15.21",
+  "fastapi>=0.115,<1",
+  "uvicorn>=0.34,<1",
+  "python-dotenv>=1,<2",
+  "httpx>=0.28,<1",
+  "websockets>=14,<18",
+  "cryptography>=42",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["app", "agents", "flow", "models", "policy", "llm_config", "language", "systems", "prompts", "realtime", "realtime_config", "crm", "crm_storage", "crm_routes"]

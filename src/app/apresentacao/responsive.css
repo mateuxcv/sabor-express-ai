@@ -1,0 +1,147 @@
+/* Preserve readable text by reflowing the active slide on smaller screens.
+   These rules exclude the overview's miniature canvases. */
+@media (max-width: 1100px), (max-aspect-ratio: 1/1) {
+  .deck-stage { width: 100%; height: 100%; top: 0; left: 0; transform: none !important; }
+  .deck-stage .deck-slide { width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; padding: 26px 32px calc(90px + env(safe-area-inset-bottom)); scrollbar-gutter: stable; }
+  .deck-stage .deck-slide > * { min-width: 0; }
+  .deck-stage .deck-masthead { height: 40px; gap: 20px; }
+  .deck-stage .deck-masthead > span { font-size: 14px; }
+  .deck-stage .deck-heading { margin-top: 36px; }
+  .deck-stage .deck-heading h1 { font-size: clamp(36px, 5.2vw, 55px); line-height: 1.08; letter-spacing: -1.4px; }
+  .deck-stage .deck-cue { font-size: 20px; line-height: 1.45; margin-top: 14px; }
+  .deck-stage .deck-slide-footer { position: static; margin-top: 32px; gap: 16px; font-size: 11px; }
+  .deck-stage .deck-slide-footer b { font-size: 12px; white-space: nowrap; }
+  .deck-stage .deck-button { min-height: 44px; white-space: normal; font-size: 16px; padding: 12px 15px; }
+  .deck-stage .deck-opening, .deck-stage .deck-closing { display: flex; flex-direction: column; margin-top: 40px; }
+  .deck-stage .deck-opening-copy, .deck-stage .deck-closing-copy { position: static; width: 100%; margin-top: 0; }
+  .deck-stage .deck-opening h1, .deck-stage .deck-closing h1 { font-size: clamp(42px, 7vw, 74px); line-height: 1.04; letter-spacing: -2px; margin-top: 16px; }
+  .deck-stage .deck-opening .deck-cue, .deck-stage .deck-closing .deck-cue { font-size: 22px; }
+  .deck-stage .deck-opening-photo { position: static; order: 2; width: 100%; height: 240px; object-position: center 60%; border-radius: 10px; margin-top: 28px; }
+  .deck-stage .deck-photo-credit { position: static; order: 3; align-self: flex-end; font-size: 11px; }
+  .deck-stage .deck-eyebrow { font-size: 13px; letter-spacing: .8px; }
+  .deck-stage .deck-facts { margin-top: 35px; gap: 16px; }
+  .deck-stage .deck-facts strong { font-size: clamp(27px, 4.5vw, 42px); letter-spacing: -1px; }
+  .deck-stage .deck-facts span { font-size: 16px; }
+  .deck-stage .deck-agenda { margin-top: 35px; gap: 13px; font-size: 15px; flex-wrap: wrap; }
+  .deck-stage .deck-agenda > span { gap: 13px; }
+  .deck-stage .deck-experience { width: 100%; margin-top: 28px; }
+  .deck-stage .deck-video { height: auto; aspect-ratio: 16/9; }
+  .deck-stage .deck-shot-button { height: auto; aspect-ratio: 2000/1153; }
+  .deck-stage .deck-capture-frame { width: 100%; height: auto; }
+  .deck-stage .deck-media-caption { font-size: 12px; }
+  .deck-stage .deck-media-caption button { font-size: 16px; min-height: 44px; }
+  .deck-stage .deck-highlights { gap: 25px; flex-wrap: wrap; justify-content: flex-start; }
+  .deck-stage .deck-highlights button { font-size: 17px; min-height: 44px; }
+  .deck-stage .deck-zoom-hint { font-size: 11px; right: 7px; bottom: 7px; padding: 5px 7px; }
+  .deck-stage .deck-plan { margin-top: 30px; }
+  .deck-stage .deck-board { font-size: 18px; gap: 12px; flex-wrap: wrap; }
+  .deck-stage .deck-phase-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 35px 24px; }
+  .deck-stage .deck-phase-thumb { height: 170px; margin-bottom: 15px; }
+  .deck-stage .deck-phase-rail::before { right: -24px; }
+  .deck-stage .deck-phase-cards article:nth-child(even) .deck-phase-rail::before { right: 0; }
+  .deck-stage .deck-phase-cards h2 { font-size: 28px; }
+  .deck-stage .deck-phase-cards p { font-size: 18px; }
+  .deck-stage .deck-phase-days { font-size: 16px; }
+  .deck-stage .deck-scope { font-size: 17px; gap: 12px; margin-top: 32px; }
+  .deck-stage .deck-premise { font-size: 16px; margin-top: 20px; }
+  .deck-stage .deck-governance { margin-top: 30px; }
+  .deck-stage .deck-slide-4::before { display: none; }
+  .deck-stage .deck-pilot { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 30px; }
+  .deck-stage .deck-pilot figure { background: var(--deck-green); border-radius: 24px; padding: 16px; }
+  .deck-stage .deck-pilot-photo { height: 260px; }
+  .deck-stage .deck-pilot figure img { height: 260px; }
+  .deck-stage .deck-pilot-badge { width: 80px; height: 80px; font-size: 48px; right: 12px; bottom: 12px; }
+  .deck-stage .deck-pilot-badge small { font-size: 13px; }
+  .deck-stage .deck-pilot figcaption { font-size: 16px; }
+  .deck-stage .deck-pilot-protocol { gap: 24px; }
+  .deck-stage .deck-pilot-protocol li, .deck-stage .deck-pilot-decision { padding-left: 44px; }
+  .deck-stage .deck-pilot-protocol li::before { font-size: 20px; }
+  .deck-stage .deck-pilot-protocol h2 { font-size: 30px; }
+  .deck-stage .deck-pilot-protocol p { font-size: 19px; }
+  .deck-stage .deck-pilot-decision { font-size: 18px; }
+  .deck-stage .deck-owner-line { font-size: 16px; line-height: 1.6; margin-top: 36px; }
+  .deck-stage .deck-results { margin-top: 38px; }
+  .deck-stage .deck-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; gap: 26px 28px; }
+  .deck-stage .deck-metrics .deck-metric-featured { grid-column: 1 / -1; grid-row: 1; min-height: 230px; padding: 28px; border-radius: 20px 20px 70px 20px; }
+  .deck-stage .deck-metrics .deck-metric-featured p { font-size: 21px; margin-top: 14px; }
+  .deck-stage .deck-metrics h2 { font-size: 19px; }
+  .deck-stage .deck-metrics strong { font-size: 46px; letter-spacing: -1.4px; margin-top: 15px; }
+  .deck-stage .deck-metrics .deck-metric-label { font-size: 37px; }
+  .deck-stage .deck-metrics .deck-metric-featured .deck-metric-label { font-size: 76px; }
+  .deck-stage .deck-metrics p { font-size: 18px; margin-top: 15px; }
+  .deck-stage .deck-targets { font-size: 18px; margin: 0; }
+  .deck-stage .deck-kpi-footer { margin-top: 26px; flex-wrap: wrap; }
+  .deck-stage .deck-kpi-footer button { min-height: 44px; }
+  .deck-stage .deck-demo { grid-template-columns: minmax(0, 1fr); gap: 35px; margin-top: 30px; }
+  .deck-stage .deck-demo-links { flex-wrap: wrap; gap: 10px 24px; }
+  .deck-stage .deck-demo-links a { font-size: 18px; min-height: 44px; }
+  .deck-stage .deck-demo-shot { height: 350px; }
+  .deck-stage .deck-demo-steps button { min-height: 44px; font-size: 17px; }
+  .deck-stage .deck-risk-plan > h2 { font-size: 21px; }
+  .deck-stage .deck-risk-matrix { gap: 20px; margin-top: 23px; }
+  .deck-stage .deck-risk-matrix > div { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
+  .deck-stage .deck-risk-matrix dt, .deck-stage .deck-risk-matrix dd { font-size: 21px; }
+  .deck-stage .deck-trust-plan { font-size: 20px; margin-top: 27px; }
+  .deck-stage .deck-topic-links button { font-size: 17px; min-height: 44px; }
+  .deck-stage .deck-closing-points { margin-top: 34px; gap: 25px; }
+  .deck-stage .deck-closing-points p { font-size: 21px; }
+  .deck-stage .deck-closing-photo { position: relative; width: 100%; height: 280px; top: auto; bottom: auto; margin-top: 32px; border-radius: 10px; overflow: hidden; }
+  .deck-stage .deck-video-error { padding: 15px; gap: 10px; }
+  .deck-stage .deck-video-error strong, .deck-stage .deck-video-error p { font-size: 16px; }
+  .deck-controls { bottom: max(10px, env(safe-area-inset-bottom)); width: max-content; max-width: calc(100% - 16px); flex-wrap: wrap; justify-content: center; }
+  .deck-controls button { width: 40px; height: 40px; }
+  .deck-show-controls { width: 40px; height: 40px; bottom: max(10px, env(safe-area-inset-bottom)); }
+}
+
+@media (max-width: 650px) {
+  .deck-stage .deck-slide { padding: 22px 22px calc(105px + env(safe-area-inset-bottom)); scrollbar-gutter: auto; }
+  .deck-stage .deck-masthead > span { font-size: 12px; }
+  .deck-stage .deck-brand { font-size: 20px; }
+  .deck-stage .deck-brand small { font-size: 14px; }
+  .deck-stage .deck-cue, .deck-stage .deck-opening .deck-cue, .deck-stage .deck-closing .deck-cue { font-size: 18px; }
+  .deck-stage .deck-heading { margin-top: 34px; }
+  .deck-stage .deck-heading h1 { font-size: 36px; }
+  .deck-stage .deck-facts { grid-template-columns: 1fr 1fr; gap: 25px; }
+  .deck-stage .deck-facts > div:last-child { grid-column: 1/-1; }
+  .deck-stage .deck-facts strong { font-size: 36px; }
+  .deck-stage .deck-opening-photo { height: 210px; }
+  .deck-stage .deck-phase-cards { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .deck-stage .deck-phase-rail::before { right: 0; }
+  .deck-stage .deck-phases { padding: 12px 18px 20px; }
+  .deck-stage .deck-phase-thumb { height: 190px; }
+  .deck-stage .deck-scope strong { display: block; margin-bottom: 5px; }
+  .deck-stage .deck-highlights { gap: 10px 22px; }
+  .deck-stage .deck-media-caption { gap: 10px; }
+  .deck-stage .deck-pilot { grid-template-columns: minmax(0, 1fr); gap: 35px; }
+  .deck-stage .deck-pilot-photo { height: 225px; }
+  .deck-stage .deck-pilot figure img { height: 225px; }
+  .deck-stage .deck-pilot-protocol h2 { font-size: 32px; }
+  .deck-stage .deck-pilot-protocol p { font-size: 20px; }
+  .deck-stage .deck-owner-line { text-align: left; }
+  .deck-stage .deck-results { margin-top: 38px; }
+  .deck-stage .deck-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 35px 20px; }
+  .deck-stage .deck-metrics h2 { font-size: 17px; }
+  .deck-stage .deck-metrics strong { font-size: 38px; }
+  .deck-stage .deck-metrics .deck-metric-label { font-size: 30px; letter-spacing: -.6px; }
+  .deck-stage .deck-metrics p { font-size: 17px; }
+  .deck-stage .deck-demo-links { gap: 4px 20px; }
+  .deck-stage .deck-demo-links a { font-size: 17px; }
+  .deck-stage .deck-demo-shot { height: 260px; }
+  .deck-stage .deck-demo-steps { gap: 20px; }
+  .deck-stage .deck-demo-steps button { font-size: 16px; }
+  .deck-stage .deck-risk-matrix > div { gap: 14px; }
+  .deck-stage .deck-risk-matrix dt, .deck-stage .deck-risk-matrix dd { font-size: 18px; }
+  .deck-stage .deck-trust-plan { font-size: 19px; }
+  .deck-stage .deck-closing-points p { font-size: 20px; }
+  .deck-stage .deck-closing-photo { height: 235px; }
+  .deck-controls { gap: 0; padding: 4px; }
+  .deck-progress { display: none; }
+  .deck-notes-nav { flex-wrap: wrap; }
+  .deck-thumbnail-grid { grid-template-columns: minmax(0, 320px); padding: 22px 16px; }
+  .deck-thumbnail-card { width: 100%; }
+  .deck-notes-meta { flex-wrap: wrap; gap: 8px; }
+  .deck-notice { width: calc(100% - 32px); bottom: 110px; }
+  .deck-dialog-inner > header { padding: 17px; }
+  .deck-dialog-inner > header h2 { font-size: 20px; }
+  .deck-kpi-dialog .deck-measurement-guide { padding: 6px 18px 22px; }
+}

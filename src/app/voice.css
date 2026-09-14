@@ -1,0 +1,290 @@
+.voice-composer-shell {
+  flex-shrink: 0;
+  min-height: 0;
+  max-height: 55%;
+  overflow-y: auto;
+  background: #f0f3e7;
+}
+
+.voice-composer-shell .whatsapp-composer {
+  padding-top: 8px;
+}
+
+.voice-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 8px 10px 0;
+  padding: 10px;
+  border: 1px solid #edddc5;
+  border-radius: 8px;
+  background: #fff7e7;
+  color: #93794e;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.voice-error > span {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.voice-error > button {
+  display: grid;
+  place-items: center;
+  padding: 2px;
+}
+
+.voice-capture-panel {
+  padding: 10px 12px 8px;
+}
+
+.voice-capture-heading,
+.voice-capture-heading > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.voice-capture-heading {
+  justify-content: space-between;
+  color: #738962;
+  font-size: 10px;
+  margin-bottom: 7px;
+}
+
+.voice-capture-heading > button,
+.voice-stop {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #8a9a7b;
+  flex-shrink: 0;
+}
+
+.voice-capture-heading > button:hover {
+  background: #e7eddd;
+}
+
+.voice-capture-panel audio,
+.voice-message audio {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: 36px;
+  border-radius: 20px;
+  margin: 4px 0 9px;
+}
+
+.voice-recording {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 42px;
+}
+
+.recording-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c47865;
+  animation: voice-pulse 1s ease-in-out infinite;
+}
+
+.voice-recording > time {
+  font-size: 12px;
+  color: #758469;
+  font-variant-numeric: tabular-nums;
+}
+
+.voice-wave {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 32px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.voice-wave i {
+  width: 3px;
+  min-width: 3px;
+  border-radius: 4px;
+  background: #a4b68d;
+  animation: voice-wave .9s ease-in-out infinite alternate;
+}
+
+.voice-stop {
+  background: #dee9d1;
+  color: #698654;
+}
+
+.voice-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 4px;
+  color: #879873;
+  font-size: 11px;
+}
+
+.voice-progress > svg {
+  animation: voice-spin 1s linear infinite;
+}
+
+.voice-review {
+  display: block;
+  font-size: 9px;
+  color: #899878;
+  margin-top: 10px;
+}
+
+.voice-review textarea {
+  display: block;
+  width: 100%;
+  height: 80px;
+  min-height: 60px;
+  resize: vertical;
+  padding: 9px 10px;
+  margin-top: 6px;
+  border: 1px solid #dce5cf;
+  border-radius: 8px;
+  background: #fffef8;
+  color: #60754e;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.voice-send-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 9px;
+}
+
+.voice-send-button,
+.voice-retry {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 38px;
+  border-radius: 7px;
+  padding: 9px 12px;
+  font-size: 11px;
+  background: #789865;
+  color: white;
+}
+
+.voice-retry {
+  width: 100%;
+  background: #e4edda;
+  color: #748e5f;
+}
+
+.voice-text-only {
+  min-height: 38px;
+  padding: 8px;
+  font-size: 10px;
+  color: #8b9c78;
+}
+
+.voice-limit {
+  display: block;
+  margin-top: 7px;
+  text-align: center;
+  font-size: 8px;
+  color: #a3af96;
+}
+
+.message-bubble.voice-bubble {
+  width: min(280px, 100%);
+}
+
+.voice-message {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.voice-message-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #7c926a;
+  font-size: 10px;
+  margin-bottom: 7px;
+}
+
+.voice-message-label time {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+  font-size: 9px;
+}
+
+.voice-transcript {
+  border-top: 1px solid #dce7d2;
+  padding-top: 6px;
+  margin-top: 5px;
+}
+
+.voice-transcript summary {
+  cursor: pointer;
+  color: #849873;
+  font-size: 10px;
+  padding: 3px 0;
+}
+
+.voice-transcript p {
+  font-size: 12px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  padding: 6px 0 3px;
+}
+
+.voice-missing {
+  display: block;
+  font-size: 10px;
+  line-height: 1.6;
+  color: #9b9272;
+  margin: 8px 0;
+}
+
+@media (max-width: 767px) {
+  .voice-review textarea {
+    font-size: 16px;
+  }
+
+  .voice-send-button,
+  .voice-retry,
+  .voice-text-only,
+  .voice-stop,
+  .voice-capture-heading > button {
+    min-height: 44px;
+  }
+
+  .voice-stop,
+  .voice-capture-heading > button {
+    width: 44px;
+  }
+
+  .voice-capture-heading {
+    margin-bottom: 3px;
+  }
+
+  .voice-message-label,
+  .voice-transcript summary {
+    font-size: 11px;
+  }
+}
+
+@keyframes voice-wave { from { transform: scaleY(.4); } to { transform: scaleY(1); } }
+@keyframes voice-pulse { 50% { opacity: .4; } }
+@keyframes voice-spin { to { transform: rotate(360deg); } }

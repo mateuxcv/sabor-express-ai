@@ -1,0 +1,263 @@
+/* The inbox must fit the available height, not just the viewport width. */
+.app-shell {
+  height: var(--app-height, 100dvh);
+  min-height: 0;
+  overflow: hidden;
+}
+
+.app-shell .main-workspace {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.app-shell .sidebar {
+  height: var(--app-height, 100dvh);
+  bottom: auto;
+}
+
+.app-shell .inbox-layout {
+  flex: 1 1 0%;
+  min-height: 0;
+  grid-template-rows: minmax(0, 1fr);
+  overflow: hidden;
+}
+
+.app-shell .chat-panel,
+.app-shell .conversation-list {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.app-shell .chat-panel > .message-thread,
+.app-shell .conversation-scroll {
+  flex: 1 1 0%;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.app-shell .composer,
+.app-shell .composer-hint,
+.app-shell .chat-header,
+.app-shell .ai-status-bar,
+.app-shell .chat-routing {
+  flex-shrink: 0;
+}
+
+.app-shell .composer:focus-within {
+  border-color: #80a576;
+  box-shadow: 0 0 0 2px #80a57624;
+}
+
+.app-shell .composer textarea:focus-visible {
+  outline: none;
+}
+
+/* Wrapping filters remain visible without a horizontal scrollbar. */
+.app-shell .list-tabs {
+  flex-wrap: wrap;
+  gap: 6px;
+  overflow: visible;
+  padding: 4px 12px 10px;
+}
+
+.app-shell .list-tabs button {
+  min-height: 34px;
+  padding: 6px 9px;
+  border-radius: 6px;
+  font-size: 11px;
+}
+
+.app-shell .list-tabs button.active {
+  background: #edf3e5;
+  color: #537546;
+}
+
+.app-shell .list-tabs button.active::after {
+  display: none;
+}
+
+.inbox-indicators-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid #e2e7db;
+  border-radius: 7px;
+  background: white;
+  color: #718663;
+  font-size: 12px;
+}
+
+.app-shell .inbox-stats-dialog .stats-cards {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-flow: row;
+  grid-auto-columns: auto;
+  gap: 12px;
+  padding: 0;
+  overflow: visible;
+}
+
+.app-shell .inbox-stats-dialog .mini-stat {
+  min-height: 90px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.app-shell .inbox-stats-dialog .stat-icon {
+  display: none;
+}
+
+.app-shell .inbox-stats-dialog .stat-label {
+  font-size: 11px;
+}
+
+.app-shell .inbox-stats-dialog .stat-value {
+  flex-wrap: wrap;
+  font-size: 24px;
+  gap: 6px;
+}
+
+.app-shell .inbox-stats-dialog .stats-demo {
+  position: static;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+  font-size: 10px;
+}
+
+/* visualViewport also catches keyboard shrinkage when innerHeight stays unchanged. */
+.app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .stats-strip,
+.app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .page-heading .heading-eyebrow,
+.app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .page-heading p,
+.app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .composer-hint,
+.app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .list-footer {
+  display: none;
+}
+
+.app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .inbox-indicators-button {
+  display: inline-flex;
+}
+
+.app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .topbar {
+  height: 52px;
+  min-height: 52px;
+}
+
+.app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .page-heading {
+  padding: 12px 20px;
+  gap: 12px;
+}
+
+.app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .page-heading h1 {
+  font-size: 25px;
+  margin-top: 0;
+  line-height: 1.4;
+}
+
+.app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .heading-controls {
+  margin-top: 0;
+}
+
+.app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .chat-header {
+  min-height: 60px;
+  height: auto;
+  padding-block: 8px;
+}
+
+.app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .ai-status-bar {
+  min-height: 44px;
+  padding-block: 4px;
+}
+
+.app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .chat-routing {
+  padding-block: 6px;
+}
+
+.app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .composer {
+  margin-top: 6px;
+  margin-bottom: max(10px, env(safe-area-inset-bottom));
+}
+
+.app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .composer textarea {
+  height: 52px;
+  padding-block: 8px;
+}
+
+.app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .composer-type {
+  padding-top: 0;
+}
+
+.app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .composer-type button {
+  min-height: 34px;
+}
+
+.app-shell.inbox-screen[data-density="short"] .topbar,
+.app-shell.inbox-screen.chat-focused[data-density="short"] .page-heading {
+  display: none;
+}
+
+.app-shell.inbox-screen.chat-focused[data-density="short"] .mobile-back {
+  display: inline-flex;
+}
+
+.app-shell.inbox-screen[data-density="short"] .chat-header {
+  min-height: 52px;
+  padding-block: 4px;
+}
+
+.app-shell.inbox-screen[data-density="short"] .composer textarea {
+  height: 42px;
+}
+
+.app-shell.inbox-screen[data-density="short"] .composer-toolbar {
+  padding-bottom: 4px;
+}
+
+.app-shell.inbox-screen[data-density="short"] .composer-toolbar :is(.icon-button, .suggestion-button, .send-button) {
+  min-height: 36px;
+}
+
+@media (max-width: 767px), (max-width: 1023px) and (max-height: 600px) {
+  .app-shell .inbox-indicators-button {
+    width: 44px;
+    min-width: 44px;
+    padding: 0;
+  }
+
+  .app-shell .inbox-indicators-button span {
+    display: none;
+  }
+
+  .app-shell .list-tabs button {
+    min-height: 40px;
+  }
+
+  .app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .page-heading {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 16px;
+    gap: 10px;
+  }
+
+  .app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .heading-controls {
+    width: 100%;
+  }
+
+  .app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .store-selector {
+    flex: 1;
+  }
+
+  .app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .store-selector select {
+    max-width: none;
+    font-size: 16px;
+  }
+
+  .app-shell.inbox-screen:is([data-density="compact"], [data-density="short"]) .chat-header {
+    padding-top: calc(8px + env(safe-area-inset-top));
+  }
+}

@@ -1,0 +1,446 @@
+.realtime-remote-audio {
+  display: none;
+}
+
+.whatsapp-header .call-launch {
+  color: #6e8b5b;
+  width: 30px;
+  height: 34px;
+  padding: 5px;
+}
+
+.whatsapp-contact {
+  min-width: 0;
+}
+
+.call-in-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 16px 10px;
+  background: #e9f0df;
+  color: #789264;
+  font-size: 9px;
+}
+
+.call-transcript-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 7px;
+  color: #8ba176;
+  font-size: 9px;
+  font-weight: 500;
+}
+
+.realtime-dialog {
+  width: 400px;
+  height: 650px;
+  max-width: calc(100vw - 28px);
+  max-height: calc(100dvh - 28px);
+  border: 1px solid #dce5d0;
+  border-radius: 28px;
+  padding: 0;
+  overflow: hidden;
+  background: #eff4e8;
+  box-shadow: 0 28px 100px #19352240;
+}
+
+.realtime-dialog::backdrop {
+  background: #24372c73;
+  backdrop-filter: blur(8px);
+}
+
+.realtime-dialog > .modal-header {
+  display: none;
+}
+
+.realtime-dialog > .modal-body {
+  padding: 0;
+  height: 100%;
+}
+
+.realtime-call {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 22px 24px 24px;
+  overflow: auto;
+  background: radial-gradient(ellipse at 50% 29%, #d8e6c9 0%, #edf3e3 35%, #f5f7ef 85%);
+  color: #3b5842;
+}
+
+.call-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.call-top > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #869d72;
+  font-size: 8px;
+  letter-spacing: 1.4px;
+}
+
+.call-top > button {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #8a9e7c;
+}
+
+.call-top > button:hover {
+  background: #dfe9d5;
+}
+
+.call-identity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 27px;
+  flex-shrink: 0;
+}
+
+.call-avatar {
+  position: relative;
+  width: 86px;
+  height: 86px;
+  display: grid;
+  place-items: center;
+  background: #77986a;
+  color: #f4f8ed;
+  border: 5px solid #f6faee;
+  border-radius: 50%;
+  box-shadow: 0 0 0 12px #c4d6b23d, 0 12px 30px #597a3215;
+}
+
+.call-avatar::after {
+  content: "";
+  position: absolute;
+  inset: -24px;
+  border: 1px solid #c5d6b384;
+  border-radius: 50%;
+}
+
+.call-avatar.speaking::after {
+  animation: call-speaking 1.5s ease-out infinite;
+}
+
+.call-identity h2 {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--heading);
+  font-size: 25px;
+  letter-spacing: -1px;
+  font-weight: 700;
+  margin-top: 27px;
+}
+
+.call-identity h2 svg {
+  background: #91ac79;
+  color: white;
+  padding: 2px;
+  border-radius: 50%;
+}
+
+.call-identity p {
+  font-size: 12px;
+  color: #8a9e7c;
+  margin-top: 7px;
+}
+
+.call-unit {
+  font-size: 9px;
+  color: #8a9c78;
+  background: #fcfdf780;
+  border: 1px solid #dce7d0;
+  border-radius: 20px;
+  padding: 5px 12px;
+  margin-top: 11px;
+}
+
+.call-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 35px;
+  font-size: 11px;
+  text-align: center;
+  color: #7e966c;
+  margin-top: 20px;
+  flex-shrink: 0;
+}
+
+.realtime-call.connecting .call-state svg {
+  animation: voice-spin 1s linear infinite;
+}
+
+.realtime-call.error .call-state {
+  color: #a8795d;
+}
+
+.call-timer {
+  font-family: var(--heading);
+  font-variant-numeric: tabular-nums;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #6f865d;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+.call-caption {
+  width: 100%;
+  min-height: 75px;
+  flex: 1;
+  margin-top: 16px;
+  padding: 14px 10px;
+  overflow-y: auto;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #849777;
+  overflow-wrap: anywhere;
+}
+
+.call-controls {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 26px;
+  margin: 17px 0 12px;
+  flex-shrink: 0;
+}
+
+.call-controls > button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  color: #7b9068;
+  background: #e6eddd;
+  border: 1px solid #dce5d3;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  position: relative;
+  margin-bottom: 26px;
+}
+
+.call-controls > button > span {
+  position: absolute;
+  top: calc(100% + 9px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 9px;
+  color: #8c9e7d;
+}
+
+.call-controls > button.selected {
+  background: #d4e2c7;
+  color: #4d7040;
+}
+
+.call-controls > .call-hangup {
+  background: #c87969;
+  border-color: #bd6e5e;
+  color: white;
+  box-shadow: 0 5px 15px #a5503619;
+}
+
+.call-controls > .call-hangup:hover {
+  background: #b76455;
+}
+
+.call-footnote {
+  font-size: 8px;
+  color: #a2af94;
+  line-height: 1.7;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.call-back,
+.call-enable-audio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 17px;
+  min-height: 44px;
+  border-radius: 9px;
+  background: #789769;
+  color: white;
+  font-size: 12px;
+  margin: 12px 0 20px;
+  flex-shrink: 0;
+}
+
+.call-enable-audio {
+  margin: 5px 0;
+  background: #dde8d1;
+  color: #698453;
+}
+
+@media (max-width: 650px) {
+  .realtime-dialog {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    border: 0;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  .realtime-call {
+    padding: max(20px, env(safe-area-inset-top)) 24px max(24px, env(safe-area-inset-bottom));
+  }
+
+  .call-identity {
+    margin-top: clamp(24px, 7vh, 70px);
+  }
+
+  .call-caption {
+    font-size: 14px;
+    padding-inline: 2px;
+  }
+
+  .call-state {
+    font-size: 13px;
+  }
+
+  .call-controls {
+    gap: 35px;
+    margin-bottom: 25px;
+  }
+
+  .call-controls > button {
+    width: 64px;
+    height: 64px;
+  }
+
+  .call-controls > button > span,
+  .call-footnote {
+    font-size: 10px;
+  }
+}
+
+@media (max-height: 650px) {
+  .call-identity {
+    margin-top: 10px;
+  }
+
+  .call-avatar {
+    width: 64px;
+    height: 64px;
+  }
+
+  .call-avatar svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .call-identity h2 {
+    margin-top: 18px;
+    font-size: 23px;
+  }
+
+  .call-state {
+    margin-top: 8px;
+  }
+
+  .call-caption {
+    margin-top: 5px;
+    min-height: 50px;
+    padding-block: 8px;
+  }
+
+  .call-controls {
+    margin-top: 10px;
+  }
+}
+
+@keyframes call-speaking {
+  from { transform: scale(.9); opacity: .9; }
+  to { transform: scale(1.15); opacity: 0; }
+}
+
+@media (max-height: 500px) {
+  .realtime-call {
+    padding: 10px 20px 12px;
+  }
+
+  .call-top > button {
+    height: 32px;
+  }
+
+  .call-identity {
+    flex-direction: row;
+    gap: 12px;
+    margin-top: 2px;
+  }
+
+  .call-avatar {
+    width: 44px;
+    height: 44px;
+    border-width: 3px;
+  }
+
+  .call-avatar::after,
+  .call-identity p,
+  .call-unit,
+  .call-footnote {
+    display: none;
+  }
+
+  .call-avatar svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .call-identity h2 {
+    margin-top: 0;
+    font-size: 21px;
+  }
+
+  .call-state {
+    min-height: 26px;
+    margin-top: 5px;
+  }
+
+  .call-timer {
+    font-size: 20px;
+  }
+
+  .call-caption {
+    min-height: 35px;
+    font-size: 11px;
+    padding-block: 4px;
+  }
+
+  .call-controls {
+    margin: 8px 0 0;
+  }
+
+  .call-controls > button {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
+  }
+}

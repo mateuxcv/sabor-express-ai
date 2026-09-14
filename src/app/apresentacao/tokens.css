@@ -1,0 +1,16 @@
+/* Inherit the product identity. A fixed 1600 × 900 canvas scales as one unit. */
+.presentation-root {
+  --deck-paper: var(--bg, #f8f7f4);
+  --deck-ink: var(--ink, #202923);
+  --deck-orange: var(--accent, #ff5a26);
+  --deck-lime: var(--lime, #d6f36a);
+  --deck-green: var(--green-dark, #065f46);
+  --deck-muted: #57635a;
+  --deck-warm: #f0eadf;
+  --deck-accent-ink: #b9360d;
+  --deck-line: #cbd2c8;
+  --deck-font: var(--font);
+  --deck-heading: var(--heading);
+  --deck-radius: 16px;
+  --deck-motion: 450ms;
+}

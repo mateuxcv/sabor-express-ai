@@ -1,0 +1,38 @@
+node_modules/
+.next/
+out/
+coverage/
+test-results/
+playwright-report/
+.env*
+!.env.example
+*.tsbuildinfo
+next-env.d.ts
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.cache/
+*.egg-info/
+.data/
+
+# Local media-production sources; optimized application assets live in public/.
+/generated-media/
+
+# Account-specific operating notes and the original case brief stay local.
+/docs/operacao-rd-station.md
+/docs/local/
+/docs/*.pdf
+
+# Credentials, database snapshots, local logs and operating-system metadata.
+*.key
+*.pem
+*.p12
+*.pfx
+*.sqlite*
+*.db
+*.db-shm
+*.db-wal
+*.log
+.DS_Store
+Thumbs.db

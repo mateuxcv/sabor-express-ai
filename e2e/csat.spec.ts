@@ -1,0 +1,88 @@
+import { test, expect } from "@playwright/test";
+import { mockSentiment } from "./sentiment-fixture";
+test.beforeEach(async ({ context }) => { await mockSentiment(context); });
+import { mockCsat } from "./csat-fixture";
+
+test("finalizar envia CSAT, registra a resposta nas duas telas e mantém uma pesquisa após reabertura", async ({ page, context }) => {
+  const csat = await mockCsat(context);
+  let assistantPosts = 0;
+  await context.route("**/api/assistant", (route) => {
+    if (route.request().method() === "POST") assistantPosts++;
+    return route.fulfill({ json: { provider: "demo", ready: true, label: "Teste" } });
+  });
+  await page.goto("/dashboard");
+  const customer = await context.newPage();
+  await customer.goto("/whatsapp");
+  await page.getByRole("button", { name: "Resolver", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Reabrir", exact: true })).toBeVisible();
+  await expect(customer.getByRole("region", { name: "Pesquisa de satisfação" })).toBeVisible();
+  await expect(customer.getByRole("button", { name: "Enviar avaliação" })).toBeDisabled();
+  await customer.getByRole("radio", { name: "4 · Satisfeito", exact: true }).check();
+  await customer.getByLabel("Comentário opcional").fill("A equipe resolveu meu problema.");
+  await customer.getByRole("button", { name: "Enviar avaliação" }).click();
+  await expect(customer.locator(".csat-saved")).toContainText("4/5");
+  await expect(page.locator(".csat-saved")).toContainText("4/5");
+  await expect(page.getByRole("button", { name: "Reabrir", exact: true })).toBeVisible();
+  await expect(page.locator(".csat-crm-status").first()).toContainText("Registrado no RD");
+  expect(assistantPosts).toBe(0);
+  await page.getByRole("button", { name: "Reabrir", exact: true }).click();
+  await page.getByRole("button", { name: "Resolver", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Reabrir", exact: true })).toBeVisible();
+  await expect(customer.locator(".csat-survey")).toHaveCount(1);
+  expect(csat.actions.filter((action) => action.action === "issue")).toHaveLength(1);
+  expect(csat.actions.filter((action) => action.action === "answer")).toHaveLength(1);
+  await customer.reload();
+  await expect(customer.locator(".csat-saved")).toContainText("A equipe resolveu meu problema.");
+  await page.getByRole("button", { name: "Visão geral", exact: true }).click();
+  const dashboard = page.getByRole("region", { name: "Resultados CSAT" });
+  await expect(dashboard.locator(".csat-kpis")).toContainText("100%");
+  await expect(dashboard.locator(".csat-kpis")).toContainText("4/5");
+  await expect(dashboard.locator(".csat-kpis")).toContainText("1 respostas / 1 pesquisas");
+  await expect(dashboard.getByRole("link", { name: "Ver no RD" })).toHaveAttribute("href", /crm\.rdstation\.com\/app\/deals\//);
+  await dashboard.getByLabel("Unidade do CSAT").selectOption("São Paulo · Moema");
+  await expect(dashboard).toContainText("Nenhuma pesquisa enviada");
+  await dashboard.getByLabel("Unidade do CSAT").selectOption("");
+  await expect(dashboard).toContainText("A equipe resolveu meu problema.");
+});
+
+test("falhas no envio e na resposta permitem retentar sem fingir sucesso", async ({ page, context }) => {
+  const csat = await mockCsat(context);
+  csat.behavior.failIssue = true;
+  await page.goto("/dashboard");
+  await page.getByRole("button", { name: "Resolver", exact: true }).click();
+  await expect(page.locator(".csat-close-error")).toContainText("temporariamente indisponível");
+  await expect(page.getByRole("button", { name: "Resolver", exact: true })).toBeEnabled();
+  expect(csat.surveys.size).toBe(0);
+  csat.behavior.failIssue = false;
+  await page.getByRole("button", { name: "Resolver", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Reabrir", exact: true })).toBeVisible();
+  await page.goto("/whatsapp");
+  await page.getByRole("radio", { name: "1 · Muito insatisfeito", exact: true }).check();
+  csat.behavior.failAnswer = true;
+  await page.getByRole("button", { name: "Enviar avaliação" }).click();
+  await expect(page.locator(".csat-survey [role=alert]")).toContainText("temporariamente indisponível");
+  await expect(page.locator(".csat-saved")).toHaveCount(0);
+  csat.behavior.failAnswer = false;
+  await page.getByRole("button", { name: "Enviar avaliação" }).click();
+  await expect(page.locator(".csat-saved")).toContainText("1/5");
+});
+
+test("CSAT funciona no celular e respostas ficam no backend após limpar o histórico visual", async ({ page, context }, testInfo) => {
+  await mockCsat(context);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/dashboard");
+  await page.locator(".conversation-item").click();
+  await page.getByRole("button", { name: "Resolver", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Reabrir", exact: true })).toBeVisible();
+  await page.goto("/whatsapp");
+  await page.getByRole("radio", { name: "5 · Muito satisfeito", exact: true }).check();
+  await page.getByRole("button", { name: "Enviar avaliação" }).click();
+  await expect(page.locator(".csat-saved")).toContainText("5/5");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.evaluate(() => localStorage.removeItem("sabor-express-demo-v1"));
+  await page.goto("/dashboard");
+  await page.getByRole("button", { name: "Visão geral", exact: true }).click();
+  await expect(page.locator(".csat-dashboard")).toContainText("5/5");
+  expect(await page.locator(".csat-dashboard").evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(true);
+  await page.screenshot({ path: testInfo.outputPath("csat-mobile.png") });
+});
